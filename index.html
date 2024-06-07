@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body class="h-screen grid grid-rows-[4rem_1fr]">
+    <div id="nav-block" class="p-4 flex items-center justify-between">
+      <nav>
+        <ul class="flex gap-4">
+          <li><button id="nav1" class="nav-btn rounded-md p-1">Section 1</button></li>
+          <li><button id="nav2" class="nav-btn rounded-md p-1">Section 2</button></li>
+          <li><button id="nav3" class="nav-btn rounded-md p-1">Section 3</button></li>
+        </ul>
+      </nav>
+      <div class="flex gap-4">
+        <button>Translate</button><button>Theme</button>
+      </div>
+    </div>
+    <div class="flex h-full">
+    <div id="left-block" class="w-1/2 bg-gray-200 flex items-center justify-center">
+      <img id="image" src="image1.jpg" alt="Image" loading="lazy" class="w-full object-center object-cover">
+    </div>
+    <div id="content-block" class="w-1/2 overflow-y-scroll scroll-smooth snap-y snap-mandatory">
+      <section id="section1" class="h-full snap-start">Section 1 Content</section>
+      <section id="section2" class="h-full snap-start">Section 2 Content</section>
+      <section id="section3" class="h-full snap-start">Section 3 Content</section>
+    </div>
+  </div>
+    <script src="./src/main.ts"></script>
+  </body>
+</html>
