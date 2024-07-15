@@ -1,44 +1,63 @@
-const sections = document.querySelectorAll("section");
-const navButtons = document.querySelectorAll(".nav-btn");
-const images = ["image1.jpg", "image2.jpg", "image3.jpg"];
-const imageElement = document.getElementById("image") as HTMLImageElement;
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll("#nav a");
 
-const observerOptions = {
-  root: document.getElementById("content-block"),
-  rootMargin: "0px",
-  threshold: 0.5,
-};
+  const glow: HTMLDivElement = document.querySelector(".glow")!;
 
-const observerCallback = (entries: IntersectionObserverEntry[]) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const index = Array.from(sections).indexOf(entry.target as HTMLElement);
-      navButtons.forEach((btn) =>
-        btn.classList.remove("bg-indigo-600", "text-white")
-      );
-      navButtons[index].classList.add("bg-indigo-600", "text-white");
-      imageElement.classList.add("slide-out");
-      imageElement.src = images[index];
+  const rightPart = document.querySelector("#content");
+  if (rightPart) {
+    rightPart.scrollTop = 0;
+  }
 
-      imageElement.addEventListener(
-        "animationend",
-        () => {
-          imageElement.classList.remove("slide-out");
-        },
-        { once: true }
-      );
+  document.addEventListener("mousemove", (e) => {
+    const { clientX: x, clientY: y } = e;
+    glow.style.transform = `translate(${x - 150}px, ${y - 150}px)`;
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => {
+            link.classList.toggle(
+              "bg-indigo-500",
+              link.getAttribute("href") === `#${entry.target.id}`
+            );
+          });
+        }
+      });
+    },
+    {
+      threshold: 0.5,
     }
+  );
+
+  sections.forEach((section) => {
+    observer.observe(section);
   });
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const targetId = link.getAttribute("href")!.substring(1);
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+});
+
+const changeLanguage = () => {
+  let currentlanguage = getComputedStyle(document.body).getPropertyValue(
+    "--language"
+  );
+
+  if (currentlanguage == "data-en") {
+    document.documentElement.style.setProperty("--language", "data-ru");
+    currentlanguage = "data-ru";
+  } else {
+    document.documentElement.style.setProperty("--language", "data-en");
+    currentlanguage = "data-en";
+  }
 };
-
-const observer = new IntersectionObserver(observerCallback, observerOptions);
-sections.forEach((section, index) => {
-  observer.observe(section);
-  section.classList.add(`z=[${index + 1}0]`);
-});
-
-navButtons.forEach((button, index) => {
-  button.addEventListener("click", () => {
-    sections[index].scrollIntoView({ behavior: "smooth" });
-  });
-});

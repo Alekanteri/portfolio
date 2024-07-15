@@ -1,35 +1,489 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Avetisov Alexander</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./src/main.ts"></script>
   </head>
-  <body class="h-screen grid grid-rows-[4rem_1fr]">
-    <div id="nav-block" class="p-4 flex items-center justify-between">
-      <nav>
-        <ul class="flex gap-4">
-          <li><button id="nav1" class="nav-btn rounded-md p-1">Section 1</button></li>
-          <li><button id="nav2" class="nav-btn rounded-md p-1">Section 2</button></li>
-          <li><button id="nav3" class="nav-btn rounded-md p-1">Section 3</button></li>
-        </ul>
-      </nav>
-      <div class="flex gap-4">
-        <button>Translate</button><button>Theme</button>
+
+  <body class="flex flex-row bg-gray-800 md:flex-col">
+    <button
+      class="bilanguage fixed text-white p-1 left-1 top-1 border-b-2 border-b-white"
+      onclick="changeLanguage()"
+      data-ru="Рус"
+      data-en="En"
+    ></button>
+    <div class="glow"></div>
+    <div
+      class="w-1/2 h-screen text-white p-4 flex flex-col gap-40 justify-center pl-32 md:w-3/4 md:m-[0_auto] md:pl-4 sm:w-5/6"
+    >
+      <div class="flex flex-col gap-6">
+        <header class="mb-4">
+          <h1
+            class="bilanguage text-4xl font-bold"
+            data-ru="Аветисов Александр"
+            data-en="Avetisov Alexander"
+          ></h1>
+          <h2
+            class="bilanguage text-lg my-2"
+            data-ru="Фронтенд/Веб-разработчик"
+            data-en="Frontend/Web developer"
+          ></h2>
+          <h3
+            class="bilanguage font-thin my-2"
+            data-ru="Я максимально точно, пиксель в пиксель, создаю удобные и практичные пользовательские интерфейсы, используя новейшие технологии."
+            data-en="I create pixel-perfect, comfortable and practical user interfaces using the latest technologies"
+          ></h3>
+        </header>
+        <nav>
+          <ul id="nav" class="space-y-2 w-max">
+            <li>
+              <a
+                href="#section1"
+                class="bilanguage block p-2 rounded select-none hover:bg-indigo-500"
+                data-ru="Обо мне"
+                data-en="About Me"
+              ></a>
+            </li>
+            <li>
+              <a
+                href="#section2"
+                class="bilanguage block p-2 rounded select-none hover:bg-indigo-500"
+                data-ru="Навыки"
+                data-en="Skills"
+              ></a>
+            </li>
+            <li>
+              <a
+                href="#section3"
+                class="bilanguage block p-2 rounded select-none hover:bg-indigo-500"
+                data-ru="Проекты"
+                data-en="Projects"
+              ></a>
+            </li>
+          </ul>
+        </nav>
       </div>
+      <footer>
+        <ul id="footer" class="flex space-x-10">
+          <li>
+            <a
+              href="https://github.com/Alekanteri"
+              target="_blank"
+              class="relative group text-white text-2xl hover:text-indigo-500/70"
+              ><i class="fab fa-github"></i>
+              <span
+                class="text-sm hidden absolute bottom-full left-1/2 bg-indigo-500/75 text-white p-0.5 rounded-lg group-hover:block"
+                >GitHub</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://t.me/Fxurhexd"
+              target="_blank"
+              class="relative group text-white text-2xl hover:text-indigo-500/70"
+            >
+              <i class="fab fa-telegram"></i>
+              <span
+                class="text-sm hidden absolute bottom-full left-1/2 bg-indigo-500/75 text-white p-0.5 rounded-lg group-hover:block"
+                >Telegram</span
+              >
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:sandor.basc@gmail.com"
+              class="relative group text-white text-2xl group hover:text-indigo-500/70"
+            >
+              <i class="fas fa-envelope"></i>
+              <span
+                class="bilanguage text-sm hidden absolute bottom-full left-1/2 bg-indigo-500/75 text-white p-0.5 rounded-lg group-hover:block"
+                data-ru="Почта"
+                data-en="Mail"
+              ></span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="path/to/yourfile.pdf"
+              target="_blank"
+              class="relative group text-white text-2xl group hover:text-indigo-500/70"
+            >
+              <i class="fas fa-file-pdf"></i>
+              <span
+                class="bilanguage text-sm hidden absolute bottom-full left-1/2 bg-indigo-500/75 text-white p-0.5 rounded-lg group-hover:block"
+                data-ru="Резюме"
+                data-en="Resume"
+              ></span>
+            </a>
+          </li>
+        </ul>
+      </footer>
     </div>
-    <div class="flex h-full">
-    <div id="left-block" class="w-1/2 bg-gray-200 flex items-center justify-center">
-      <img id="image" src="image1.jpg" alt="Image" loading="lazy" class="w-full object-center object-cover">
+    <div
+      id="content"
+      class="w-1/2 h-screen overflow-y-scroll text-white pr-14 md:m-[0_auto] md:w-3/4 md:h-full md:p-4 sm:w-5/6 sm:p-0"
+    >
+      <section id="section1" class="min-h-screen p-4 grid items-center">
+        <div class="flex flex-col gap-10">
+          <h2
+            class="bilanguage text-3xl font-bold my-4"
+            data-ru="Обо мне"
+            data-en="About Me"
+          ></h2>
+          <div>
+            <span
+              class="bilanguage"
+              data-ru="Я начал интересоваться программированием в 2019 году, тогда как и все, я начал с языка программирования "
+              data-en="I started to be interested in programming in 2019, at that time,
+            like everyone else, I started with the "
+            >
+            </span
+            ><a
+              href="https://www.python.org/"
+              class="text-indigo-400 select-none"
+              >Python</a
+            ><span
+              class="bilanguage"
+              data-ru=" Потом, уже имея некоторое представление о программировании, я переключился на веб-разработку и начал изучать"
+              data-en=" programming language. Then, already having some understanding of programming, I switched to web development and began to study"
+            ></span>
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+              class="text-indigo-400 select-none"
+              >JavaScript.</a
+            ><span
+              class="bilanguage"
+              data-ru=" Сейчас я продолжаю работать и развиваться в экосистеме JavaScript."
+              data-en=" Now I continue to work and develop in the JavaScript ecosystem."
+            >
+            </span>
+          </div>
+          <span
+            class="bilanguage"
+            data-ru="В прошлом проекте я занимался бизнес-логикой веб-приложения, нужно было сделать калькулятор рассрочки для партнерских продуктов. В мои задачи также входила кроссбраузерная и кроссплатформенная совместимость этого веб-приложения."
+            data-en="In my last project, I was engaged in the business logic of a web application, it was necessary to make an installment calculator for partner products. My tasks also included cross-browser and cross-platform compatibility of this web application."
+          >
+          </span>
+          <span
+            class="bilanguage"
+            data-ru="В свободное время я люблю читать различную литературу. Иногда читаю статьи с сайтов, на которые подписан или решаю задачи на предназначенных для этого сайтах. Я занимаюсь спортом, чтобы вести здоровый образ жизни, или навожу порядок на своем рабочем месте или организовываю пространство на компьютере."
+            data-en="In my free time, I like to read various literature. Sometimes I read articles from sites I subscribe to or solve problems on sites designed for this purpose. I exercise to live a healthy lifestyle, or I organize my workspace or organize my computer space."
+          >
+          </span>
+        </div>
+      </section>
+      <section id="section2" class="min-h-screen p-4 grid items-center">
+        <div class="flex flex-col gap-10">
+          <h2
+            class="bilanguage text-3xl font-bold my-4"
+            data-ru="Навыки и Инструментарий"
+            data-en="Skills and Tools"
+          ></h2>
+          <div class="flex flex-col gap-8">
+            <div>
+              <span
+                class="bilanguage"
+                data-ru="В своей повседневной работе в качестве редактора кода Я в основном использую "
+                data-en="In my daily work, as a code editor, I mainly use "
+              ></span
+              ><a href="https://neovim.io/" class="text-indigo-400 select-none"
+                >NeoVim</a
+              ><span
+                class="bilanguage"
+                data-ru=", но иногда Я использую "
+                data-en=", but sometimes I use "
+              ></span
+              ><a
+                href="https://code.visualstudio.com/"
+                class="text-indigo-400 select-none"
+                >VsCode</a
+              ><span
+                class="bilanguage"
+                data-ru=" если мне нужно работать с большим количеством файлов одновременно. А для работы с базой данных "
+                data-en=" if I need to work with a large number of files at the same time. And for working with "
+              ></span
+              ><a
+                href="https://www.postgresql.org/"
+                class="text-indigo-400 select-none"
+                >PostgreSQL</a
+              ><span
+                class="bilanguage"
+                data-ru=" Я использую "
+                data-en=" databases, I use "
+              ></span
+              ><a
+                href="https://www.pgadmin.org/"
+                class="text-indigo-400 select-none"
+                >pgAdmin</a
+              >
+            </div>
+            <div>
+              <span
+                class="bilanguage"
+                data-ru="Я считаю, что для более продуктивной работы человек должен структурировать и умело оперировать данными и информацией. Для выполнения этого условия я использую приложение для заметок - "
+                data-en="I believe that for more productive work, a person should structure and skillfully operate data and information. To fulfill this condition, I use an application for taking notes - "
+              ></span
+              ><a
+                href="https://obsidian.md/"
+                class="text-indigo-400 select-none"
+                >Obsidian.</a
+              ><span
+                class="bilanguage"
+                data-ru=" В качестве дневника я использую "
+                data-en=" Just as a diary, I use "
+              ></span
+              ><a
+                href="https://www.notion.so/product?fredir=1"
+                class="text-indigo-400 select-none"
+                >Notion</a
+              ><span
+                class="bilanguage"
+                data-ru=" чтобы делать ежедневные заметки и трекеры для себя"
+                data-en=" to make daily notes and trackers for myself"
+              ></span>
+            </div>
+            <p
+              class="bilanguage"
+              data-ru="Используемые языки программирования и библиотеки:"
+              data-en="Programming languages and libraries used:"
+            ></p>
+            <div class="grid grid-cols-3 gap-4 md:grid-cols-2">
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >JavaScript</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >TypeScript</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >Rust</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >React</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >Redux</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >PostgreSQL</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >NextJS</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >NodeJS</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >Tauri</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >Tokio</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >Vite</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >Webpack</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >Bun</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >Scss</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >Tailwind</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >Stylex</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >MsSQL</span
+              >
+              <span
+                class="max-w-40 text-lg border-b border-indigo-600 pb-2 cursor-default"
+                >Flutter</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section3" class="min-h-screen p-4 grid items-center">
+        <div class="flex flex-col gap-10">
+          <h2
+            class="bilanguage text-3xl font-bold my-4"
+            data-ru="Проекты"
+            data-en="Projects"
+          ></h2>
+          <div class="flex flex-col">
+            <a href="https://github.com/Alekanteri/task_md">
+              <div
+                class="linkItem relative group border border-white rounded-md p-4 hover:border-indigo-500/80 transition-colors"
+              >
+                <div
+                  class="absolute w-full h-full bg-indigo-500/30 opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <div
+                    class="absolute top-0 right-0 m-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <i class="fas fa-link"></i>
+                  </div>
+                </div>
+                <h3 class="text-2xl text-center self-center">TaskMD</h3>
+                <img
+                  class="self-center"
+                  width="250"
+                  src="/taskMD.png"
+                  alt="TaskMD"
+                />
+                <div class="linkLang flex flex-wrap items-center gap-2 py-4">
+                  <span class="bg-indigo-500 rounded-xl p-1">React</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">TypeScript</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">Rust</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">Tauri</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">Jotai</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">Tailwind</span>
+                </div>
+                <p
+                  class="bilanguage my-4"
+                  data-ru="Это приложение для создания заметок и записей с использованием синтаксиса markdown документа. Для кодинга он поддерживает как обычный блок кода, так и песочницу с предварительным просмотром."
+                  data-en="This is an application for taking notes and recordings using markdown syntax. For coding, it supports both a regular code block and a sandbox with preview."
+                ></p>
+              </div>
+            </a>
+          </div>
+          <div class="flex flex-col">
+            <a href="https://github.com/Alekanteri/Budget-App">
+              <div
+                class="linkItem relative group border border-white rounded-md p-4 hover:border-indigo-500/80 transition-colors"
+              >
+                <div
+                  class="absolute w-full h-full bg-indigo-500/30 opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <div
+                    class="absolute top-0 right-0 m-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <i class="fas fa-link"></i>
+                  </div>
+                </div>
+                <h3 class="text-2xl text-center self-center">Budget App</h3>
+                <img
+                  class="self-center"
+                  width="250"
+                  src="/BudgetApp.png"
+                  alt="Budget App"
+                />
+                <div class="linkLang flex flex-wrap items-center gap-2 py-4">
+                  <span class="bg-indigo-500 rounded-xl p-1">React</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">TypeScript</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">Scss</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">React-hooks</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">Bun</span>
+                </div>
+                <p
+                  class="bilanguage my-4"
+                  data-ru="Веб-приложение для регулирования вашего бюджета и управления расходами. Есть возможность добавлять расходы по отдельным категориям и вещам."
+                  data-en="Web application for regulating your budget and managing expenses. It is possible to add expenses for individual categories and things."
+                ></p>
+              </div>
+            </a>
+          </div>
+          <div class="flex flex-col">
+            <a href="https://github.com/Alekanteri/Tomato-app">
+              <div
+                class="linkItem relative group border border-white rounded-md p-4 hover:border-indigo-500/80 transition-colors"
+              >
+                <div
+                  class="absolute w-full h-full bg-indigo-500/30 opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <div
+                    class="absolute top-0 right-0 m-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <i class="fas fa-link"></i>
+                  </div>
+                </div>
+                <h3 class="text-2xl text-center self-center">Tomato App</h3>
+                <img class="self-center" width="250" src="/Tomato.png" alt="" />
+                <div class="linkLang flex flex-wrap items-center gap-2 py-4">
+                  <span class="bg-indigo-500 rounded-xl p-1">TypeScript</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">Scss</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">Rust</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">Tauri</span>
+                </div>
+                <p
+                  class="bilanguage my-4"
+                  data-ru="Простое приложение Pomodoro Timer. Цель этого приложения — помочь вам сосредоточиться на любой задаче, над которой вы работаете, например, на учебе, письме или кодинге."
+                  data-en="A simple Pomodoro Timer application. The purpose of this app is to help you focus on whatever task you're working on, such as studying, writing, or coding."
+                ></p>
+              </div>
+            </a>
+          </div>
+          <div class="flex flex-col">
+            <a href="https://github.com/Murad-Bulguchev/al-baraka-app-new">
+              <div
+                class="linkItem relative group border border-white rounded-md p-4 hover:border-indigo-500/80 transition-colors"
+              >
+                <div
+                  class="absolute w-full h-full bg-indigo-500/30 opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <div
+                    class="absolute top-0 right-0 m-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <i class="fas fa-link"></i>
+                  </div>
+                </div>
+                <h3 class="text-2xl text-center self-center">Al-Baraka</h3>
+                <img
+                  class="self-center"
+                  width="250"
+                  src="/AlBaraka.png"
+                  alt=""
+                />
+                <div class="linkLang flex flex-wrap items-center gap-2 py-4">
+                  <span class="bg-indigo-500 rounded-xl p-1">JavaScript</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">React</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">axios</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">Scss</span>
+                  <span class="bg-indigo-500 rounded-xl p-1"
+                    >React Hook Form</span
+                  >
+                  <span class="bg-indigo-500 rounded-xl p-1">Vite</span>
+                  <span class="bg-indigo-500 rounded-xl p-1">Frame Motion</span>
+                </div>
+                <p
+                  class="bilanguage my-4"
+                  data-ru="Сайт, предлагающий микрозаймы на приобретение техники, автозапчастей, стройматериалов и мебели. На сайте сразу видно, сколько вы будете должны в месяц и сколько переплачиваете, есть дополнительная функция консультации."
+                  data-en="A site that offers microloans for the purchase of equipment, car parts, building materials and furniture. On the site you can immediately see how much you will owe per month and how much you overpay, there is an additional consultation function."
+                ></p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
-    <div id="content-block" class="w-1/2 overflow-y-scroll scroll-smooth snap-y snap-mandatory">
-      <section id="section1" class="h-full snap-start">Section 1 Content</section>
-      <section id="section2" class="h-full snap-start">Section 2 Content</section>
-      <section id="section3" class="h-full snap-start">Section 3 Content</section>
-    </div>
-  </div>
-    <script src="./src/main.ts"></script>
   </body>
 </html>

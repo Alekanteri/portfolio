@@ -1,22 +1,76 @@
+@import url(https://fonts.googleapis.com/css?family=Exo+2:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.nav-btn {
+:root {
+  --language: data-en;
+}
+
+::-moz-selection {
+  color: white;
+  background-color: rgba(99, 102, 241, 0.7);
+}
+
+::selection {
+  color: white;
+  background-color: rgba(99, 102, 241, 0.7);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Exo 2";
+}
+
+#nav a {
   transition: all 0.3s ease;
 }
 
-@keyframes slideOut {
-  0% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+#footer a {
+  transition: all 0.3s ease;
 }
 
-#image.slide-out {
-  animation: slideOut 0.7s ease-in-out;
+.glow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.1) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transition: transform 0.09s ease;
+}
+
+.linkItem {
+  display: grid;
+  grid-template-areas:
+    "title title img img"
+    "title title img img"
+    "langs langs img img"
+    "langs langs img img"
+    "desc desc desc desc";
+}
+
+.linkItem > h3 {
+  grid-area: title;
+}
+
+.linkItem > img {
+  grid-area: img;
+}
+
+.linkItem > .linkLang {
+  grid-area: langs;
+}
+
+.linkItem > p {
+  grid-area: desc;
+}
+
+.bilanguage::after {
+  content: attr(var(--language));
 }
